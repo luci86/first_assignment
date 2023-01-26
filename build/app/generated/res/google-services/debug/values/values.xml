@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">32315060734-r64jfkk49tboqg6h6l1adbv44v4gsljv.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">32315060734</string>
+    <string name="google_api_key" translatable="false">AIzaSyC4qhPFU9T9FFXWudXWpSpw7RfY5Nd4jN0</string>
+    <string name="google_app_id" translatable="false">1:32315060734:android:2ef1a3722063a1cf7ad0af</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyC4qhPFU9T9FFXWudXWpSpw7RfY5Nd4jN0</string>
+    <string name="google_storage_bucket" translatable="false">shooting-score-log.appspot.com</string>
+    <string name="project_id" translatable="false">shooting-score-log</string>
+</resources>
