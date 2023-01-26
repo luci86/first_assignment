@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:first_project/screens/score_screen.dart';
 
 class ScoreScreenReg extends StatefulWidget {
 
@@ -7,7 +10,7 @@ class ScoreScreenReg extends StatefulWidget {
 }
 
 class _ScoreScreenStateReg extends State<ScoreScreenReg> {
-
+  final _auth = FirebaseAuth.instance;
   String username = '';
   String password = '';
 
@@ -24,13 +27,22 @@ class _ScoreScreenStateReg extends State<ScoreScreenReg> {
             padding: const EdgeInsets.only(bottom: 50),
             child: Column(mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                TextField(onChanged: (value) {username=value;},),
-                TextField(onChanged: (value) {password=value;},),
+                TextField(textAlign: TextAlign.center,
+                  onChanged: (value) {username=value;},),
+                TextField(obscureText: true ,
+                  textAlign: TextAlign.center,
+                  onChanged: (value) {password=value;},),
                 SizedBox(height: 30,),
-                TextButton(onPressed: (){
-                  print(username);
-                  print(password);
-                }, child: Text('Register'), style: style,)
+                TextButton(onPressed: () async {
+                  try {
+                  final newUser = await _auth.createUserWithEmailAndPassword(email: username, password: password);
+                  if (newUser != null) {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> ScoreScreen()));
+                  }
+                }
+                catch (e) {print (e);}},
+
+                child: Text('Register'), style: style,)
               ],
             ),
           ),

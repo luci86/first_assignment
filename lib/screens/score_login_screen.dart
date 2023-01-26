@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:first_project/screens/score_registration_screen.dart';
 
-class ScoreScreen extends StatefulWidget {
+class ScoreScreenLog extends StatefulWidget {
 
   @override
-  State<ScoreScreen> createState() => _ScoreScreenState();
+  State<ScoreScreenLog> createState() => _ScoreScreenStateLog();
 }
 
-class _ScoreScreenState extends State<ScoreScreen> {
+class _ScoreScreenStateLog extends State<ScoreScreenLog> {
 
 
 
@@ -24,8 +24,11 @@ class _ScoreScreenState extends State<ScoreScreen> {
             padding: const EdgeInsets.only(bottom: 50),
             child: Column(mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                TextField(onChanged: (value) {},),
-                TextField(onChanged: (value) {},),
+                TextField(textAlign:TextAlign.center,
+                onChanged: (value) {},),
+                TextField(textAlign:TextAlign.center,
+                    obscureText: true,
+                    onChanged: (value) {},),
                 SizedBox(height: 30,),
                 TextButton(onPressed: (){}, child: Text('Log In'),style: style,),
                 TextButton(onPressed: (){Navigator.push(context, MaterialPageRoute(builder: (context)=> ScoreScreenReg()));}, child: Text('Register'), style: style,)

@@ -20,7 +20,7 @@ class StartingScreen extends StatelessWidget {
           children: [
             Expanded(child: Container()),
             Expanded(child: Container()),
-            ElevatedButton (style:style, onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=> ScoreScreen()), );},
+            ElevatedButton (style:style, onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=> ScoreScreenLog()), );},
               child: Text("Score Tracker", style: TextStyle(fontSize: 20),),),
             Expanded(child: Container()),
             ElevatedButton(style:style, onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context)=> StringChoice()), );},
