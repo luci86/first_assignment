@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:first_project/screens/score_screen.dart';
 
+
 class ScoreScreenReg extends StatefulWidget {
 
   @override
@@ -10,12 +11,14 @@ class ScoreScreenReg extends StatefulWidget {
 }
 
 class _ScoreScreenStateReg extends State<ScoreScreenReg> {
+
   final _auth = FirebaseAuth.instance;
   String username = '';
   String password = '';
 
   @override
   Widget build(BuildContext context) {
+
     final ButtonStyle style = ElevatedButton.styleFrom(
         textStyle:TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black,),
         backgroundColor: Colors.deepOrangeAccent);
@@ -34,6 +37,7 @@ class _ScoreScreenStateReg extends State<ScoreScreenReg> {
                   onChanged: (value) {password=value;},),
                 SizedBox(height: 30,),
                 TextButton(onPressed: () async {
+
                   try {
                   final newUser = await _auth.createUserWithEmailAndPassword(email: username, password: password);
                   if (newUser != null) {
@@ -51,3 +55,5 @@ class _ScoreScreenStateReg extends State<ScoreScreenReg> {
     );
   }
 }
+
+
