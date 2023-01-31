@@ -1,4 +1,3 @@
-
 import 'package:first_project/screens/score_login_screen.dart';
 import 'package:first_project/screens/string_of_fire.dart';
 import 'package:flutter/material.dart';

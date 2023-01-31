@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:first_project/screens/add_task_screen.dart';
 
 class ScoreScreen extends StatefulWidget {
 
@@ -36,10 +37,19 @@ class _ScoreScreenState extends State<ScoreScreen> {
 
     return SafeArea(
         child:Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.deepOrangeAccent,
+            leading: null,
+            actions: [IconButton(onPressed: () {_auth.signOut(); Navigator.pop(context);}, icon: Icon(Icons.close))],
+          ),
           backgroundColor: Colors.blueGrey,
           floatingActionButton: FloatingActionButton( backgroundColor: Colors.deepOrangeAccent,
-            onPressed: (){},
+            onPressed: (){
+            showModalBottomSheet(context: context, builder: (context) =>  AddTaskScreen(),
+            );
+            },
           child: const Icon (Icons.add, size: 40, color: Colors.white,),),
+
         )
 
           );
