@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 
 class AddTaskScreen extends StatelessWidget {
 
+  final scoreTextController = TextEditingController();
   final _firebase = FirebaseFirestore.instance;
   String score = '';
   final date = DateTime.now();
@@ -28,10 +29,11 @@ class AddTaskScreen extends StatelessWidget {
         ),
       child: Column(
         children: [
-          TextField(textAlign: TextAlign.center, onChanged: (value){
+          TextField(textAlign: TextAlign.center, controller: scoreTextController, onChanged: (value){
             score=value;
           },),
           ElevatedButton(style: style, onPressed: () {
+            scoreTextController.clear();
             _firebase.collection('scores').add({'score' : score, 'date' : formated});
           }, child: Text('Add Score'),),
         ],
