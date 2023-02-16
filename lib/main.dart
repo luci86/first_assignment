@@ -1,6 +1,8 @@
+import 'package:first_project/util/username.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:first_project/screens/start_screen.dart';
+import 'package:provider/provider.dart';
 
 
 void main() async {
@@ -12,6 +14,8 @@ void main() async {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: StartingScreen());
+    return ChangeNotifierProvider(
+      create: (context) => Username(),
+        child: MaterialApp(home: StartingScreen()));
   }
 }

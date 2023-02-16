@@ -1,6 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+
 
 class AddTaskScreen extends StatelessWidget {
 
@@ -9,6 +12,10 @@ class AddTaskScreen extends StatelessWidget {
   String score = '';
   final date = DateTime.now();
   late String formated = DateFormat('d.M.y').format(date);
+  User? user = FirebaseAuth.instance.currentUser;
+  late String? email = user?.email;
+
+
 
 
   final ButtonStyle style = ElevatedButton.styleFrom(
@@ -34,7 +41,7 @@ class AddTaskScreen extends StatelessWidget {
           },),
           ElevatedButton(style: style, onPressed: () {
             scoreTextController.clear();
-            _firebase.collection('scores').add({'score' : score, 'date' : formated});
+            _firebase.collection('scores').add({'score' : score, 'date' : formated, 'user' : email});
           }, child: Text('Add Score'),),
         ],
       ),
