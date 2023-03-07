@@ -10,6 +10,7 @@ class Username extends ChangeNotifier {
    changeUsername(String newString) {
 
     username = newString;
+    username.toString();
     notifyListeners();
     print(username);
   }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:first_project/screens/add_task_screen.dart';
 import 'package:provider/provider.dart';
+
 import 'package:first_project/util/username.dart';
 
 
@@ -47,6 +48,7 @@ class _ScoreScreenState extends State<ScoreScreen> {
                 onPressed: () async {
                   await _auth.signOut();
                   Navigator.pop(context);
+                  // super.initState();
 
                 },
                 icon: Icon(Icons.close))
@@ -87,13 +89,15 @@ class _ScoreStreamState extends State<ScoreStream> {
   @override
   Widget build(BuildContext context) {
 
-    String user  = Provider.of<Username>(context).username;
+    final getUser = _auth.currentUser;
+    final user = getUser!.email.toString();
+    print(user);
 
-    return Consumer<Username>(
-      builder: (context, value, child) => StreamBuilder(
+    return StreamBuilder(
         stream: _firestore.collection('scores').where('user', isEqualTo: user).snapshots(),
         builder:  (context, snapshot){
           if (snapshot.hasData){
+            print(user);
             final scores = snapshot.data?.docs;
             List <ScoreDisplay> scoreWidgets = [];
             for (var score in scores!) {
@@ -115,9 +119,8 @@ class _ScoreStreamState extends State<ScoreStream> {
           }
           return Text('This is where the results go');
 
-        },
-      ),
-    );
+        });
+
   }
 }
 
